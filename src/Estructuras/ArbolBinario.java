@@ -16,6 +16,7 @@ public class ArbolBinario {
 	
 	public void insertar(int dato){
 		if(isEmpty())
+
 			root = new Nodo(dato);
 		else{
 			if(dato < root.getDato()){
