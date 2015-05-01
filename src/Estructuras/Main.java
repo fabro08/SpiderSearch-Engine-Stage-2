@@ -1,6 +1,5 @@
 package Estructuras;
 
-import Parseo.TikaParser;
 
 public class Main {
 
