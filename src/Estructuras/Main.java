@@ -11,7 +11,7 @@ public class Main {
 		arbolito.insertar(9);
 		//arbolito.insertar(7);
 		arbolito.inOrden(arbolito.obtenerRaiz());
-		boolean elimina = arbolito.eliminar(87);
+		boolean elimina = arbolito.eliminar(8);
 		if (elimina == true)
 			javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
 		else {
