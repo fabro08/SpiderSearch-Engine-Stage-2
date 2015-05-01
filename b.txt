@@ -1,0 +1,15 @@
+Excepciones
+
+Las excepciones se utilizan para controlar errores en la ejecución de un programa, ahora bien cada excepción contiene información sobre el error dado, a su vez se realiza una pila de llamadas basadas en los métodos que han sido llamados durante la ejecución hasta que se produjo el error, esta pila de llamadas contiene bloque de códigos con los que se puede manejar la excepción, cuando se encuentra un controlador adecuado  que se encarga de capturar la excepción si no se encuentra un controlador apropiado el sistema de ejecución finaliza.
+
+Tipos de excepciones:
+Para ayudar a tener un mejor manejo el código debe de tener una serie de excepciones como la declaración de try o el método throws, existen tres clases de excepciones entre ellas están:
+
+La excepción comprobada que está sujeta a la captura o especificación de Menesteres. 
+
+El segundo tipo de excepción es el error, están son los errores ajenos a la aplicación y que no se pueden anticipar, no están sujetos  a la especificación de Menesteres pues estas están indicadas por Error y subclases. 
+La tercera clase de excepción es la excepción en tiempo de ejecución, al contrario del Error, estas son internas a la aplicación, pero no se pueden anticipar, indican errores de programación  y no están sujetos a la especificación de Menesteres.
+
+Para el manejo de excepciones se debe de encerrar el código dentro de un try, ya que es manejado por un gestor de excepciones asociado a él para asociar el try se debe de poner un catch, el tipo de argumento ExceptionType declara el tipo de excepción que se debe de manejar, si un catch bloque maneja más de un tipo de excepción entonces es  un parámetro final.
+Las excepciones tienen ventajas como el poder separar el código, por ejemplo el uso de pseudocódigo ayuda a separar el código de errores sobre el código “regular”, también se puede dar una propagación de errores en la pila de llamadas.
+También el uso de excepciones permite agrupar y diferenciar los tipos de errores que se presenten en la ejecución del programa.
