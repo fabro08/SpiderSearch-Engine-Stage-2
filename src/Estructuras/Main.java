@@ -1,6 +1,5 @@
 package Estructuras;
 
-import Parseo.TikaParser;
 
 public class Main {
 
@@ -9,7 +8,7 @@ public class Main {
 		arbolito.insertar(5);
 		arbolito.insertar(8);
 		arbolito.insertar(9);
-		//arbolito.insertar(7);
+		arbolito.insertar(7);
 		arbolito.inOrden(arbolito.obtenerRaiz());
 		boolean elimina = arbolito.eliminar(8);
 		if (elimina == true)
