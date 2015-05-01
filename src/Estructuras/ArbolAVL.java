@@ -128,7 +128,7 @@ public class ArbolAVL {
 	public void inOrden(NodoArbolAVL r){
 		if (r != null){
 			inOrden(r.hijoIzquierdo);
-			System.out.println(r.dato + ", ");
+			System.out.print(r.dato + ", ");
 			inOrden(r.hijoDerecho);
 		}
 	}
