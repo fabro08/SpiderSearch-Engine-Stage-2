@@ -16,8 +16,5 @@ public class NodoArbolAVL {
 		this.hijoIzquierdo = null;
 		this.hijoDerecho = null;
 		
-	}
-
-	
-	
+	}	
 }
