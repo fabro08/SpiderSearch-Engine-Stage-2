@@ -62,7 +62,7 @@ public class TikaParser {
                 }
             }
         }
-     
+        
     }
 	/**
 	 * Método para retornar el texto

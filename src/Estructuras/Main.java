@@ -1,5 +1,6 @@
 package Estructuras;
 
+import Parseo.Separar;
 import Parseo.TikaParser;
 
 public class Main {
@@ -9,9 +10,9 @@ public class Main {
 		arbolito.insertar(5);
 		arbolito.insertar(8);
 		arbolito.insertar(9);
-		//arbolito.insertar(7);
+		arbolito.insertar(7);
 		arbolito.inOrden(arbolito.obtenerRaiz());
-		boolean elimina = arbolito.eliminar(87);
+		boolean elimina = arbolito.eliminar(5);
 		if (elimina == true)
 			javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
 		else {
@@ -21,6 +22,11 @@ public class Main {
 		
 		System.out.println("");
 		arbolito.inOrden(arbolito.obtenerRaiz());
+		TikaParser  aParser = new TikaParser();
+		String a= String.valueOf(aParser.GetHandler());
+       
+		Separar fghSeparar = new Separar(a);
+	fghSeparar.CicloToken();
 	}
 
 }
