@@ -1,5 +1,6 @@
 package Estructuras;
 
+import Parseo.Separar;
 import Parseo.TikaParser;
 
 public class Main {
@@ -10,8 +11,12 @@ public class Main {
 //		arbolito.insertar(8);
 //		arbolito.insertar(9);
 //		arbolito.inOrden(arbolito.obtenerRaiz());
-		TikaParser eParser = new TikaParser();
-		System.out.println(eParser.GetHandler());
+		
+	//	Separar eSeparar = new Separar(a);
+		
+	//	eSeparar.CicloToken(eSeparar);
+		//System.out.println(eSeparar.CicloToken());
+				 
 	}
 
 }
