@@ -8,11 +8,11 @@ package Estructuras;
  *
  */
 public class NodoArbolAVL {
-	int dato;
+	Palabra palabra;;
 	int fe;
 	NodoArbolAVL hijoIzquierdo, hijoDerecho;
-	public NodoArbolAVL(int d){
-		this.dato = d;
+	public NodoArbolAVL(Palabra p){
+		this.palabra = p;
 		this.fe = 0;
 		this.hijoIzquierdo = null;
 		this.hijoDerecho = null;
