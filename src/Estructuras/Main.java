@@ -9,6 +9,7 @@ public class Main {
 		arbolito.insertar(5);
 		arbolito.insertar(8);
 		arbolito.insertar(9);
+		arbolito.insertar(7);
 		arbolito.inOrden(arbolito.obtenerRaiz());
 		boolean elimina = arbolito.eliminar(87);
 		if (elimina == true)
