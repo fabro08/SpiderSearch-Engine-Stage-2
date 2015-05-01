@@ -1,5 +1,7 @@
 package Estructuras;
 
+import Parseo.TikaParser;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -18,11 +20,6 @@ public class Main {
 		
 		System.out.println("");
 		arbolito.inOrden(arbolito.obtenerRaiz());
-		
-		
-
-		TikaParser eParser = new TikaParser();
-		System.out.println(eParser.GetHandler());
 	}
 
 }

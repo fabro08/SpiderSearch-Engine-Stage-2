@@ -25,16 +25,17 @@ public class TikaParser {
 
 	Metadata metadata = new Metadata();
 	
-	ContentHandler handler = new BodyContentHandler();
-
+	BodyContentHandler handler = new BodyContentHandler();
+	
+	InputStream texto = null;
    /**
     * Constructor que extrae el texto
     */
 	public TikaParser(){
-        InputStream texto = null;
+        
 
         try {
-            texto = new BufferedInputStream(new FileInputStream(new File("a.pdf")));
+            texto = new BufferedInputStream(new FileInputStream(new File("b.txt")));
             
             parseo.parse(texto, handler, metadata, new ParseContext());
          
@@ -61,12 +62,16 @@ public class TikaParser {
                 }
             }
         }
+     
     }
 	/**
 	 * Método para retornar el texto
 	 * @return handler
 	 */
-   public ContentHandler GetHandler(){
+   public BodyContentHandler GetHandler(){
 	   return handler;
+   }
+   public InputStream getTexto(){
+	   return texto;
    }
 }
