@@ -8,7 +8,8 @@ package Estructuras;
  *
  */
 public class NodoArbolAVL {
-	int dato, fe;
+	int dato;
+	int fe;
 	NodoArbolAVL hijoIzquierdo, hijoDerecho;
 	public NodoArbolAVL(int d){
 		this.dato = d;

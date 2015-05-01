@@ -20,7 +20,7 @@ public class ArbolAVL {
 	
 	//Buscar
 	public NodoArbolAVL buscar(int d, NodoArbolAVL r){
-		if(raiz == null)
+		if(r == null)
 			return null;
 		else if(r.dato == d)
 			return r;
@@ -28,6 +28,7 @@ public class ArbolAVL {
 			return buscar(d, r.hijoDerecho);
 		else
 			return buscar(d, r.hijoIzquierdo);
+		
 		
 	}
 	//Obtener Factor de Equilibrio
@@ -74,7 +75,7 @@ public class ArbolAVL {
 		return temporal;	
 	}
 	
-	//Metodo para insertar AVL (De forma valanceada)
+	//Metodo para insertar AVL (De forma balanceada)
 	public NodoArbolAVL insertarAVL(NodoArbolAVL nuevo, NodoArbolAVL subAr){
 		NodoArbolAVL nuevoPadre = subAr;
 		if(nuevo.dato < subAr.dato){
@@ -136,23 +137,87 @@ public class ArbolAVL {
 	//Metodo para recorrer el Arbol PreOrden
 	public void preOrden(NodoArbolAVL r){
 		if (r != null){
-			System.out.println(r.dato + ", ");
+			System.out.print(r.dato + ", ");
 			preOrden(r.hijoIzquierdo);
 			preOrden(r.hijoDerecho);
 		}
 	}
 	
 	//Metodo para recorrer el Arbol PostOrden
-		public void postOrden(NodoArbolAVL r){
-			if (r != null){
-				postOrden(r.hijoIzquierdo);
-				postOrden(r.hijoDerecho);
-				System.out.println(r.dato + ", ");
-			}
+	public void postOrden(NodoArbolAVL r){
+		if (r != null){
+			postOrden(r.hijoIzquierdo);
+			postOrden(r.hijoDerecho);
+			System.out.print(r.dato + ", ");
 		}
-		
-			
-		
-		
+	}
 	
+	//Metodo para eliminar un nodo
+	public boolean eliminar(int d){
+		NodoArbolAVL auxiliar = raiz;
+		NodoArbolAVL padre = raiz;
+		boolean esHijoizq = true;
+		while(auxiliar.dato != d){
+			padre = auxiliar;
+			if(d < auxiliar.dato){
+				esHijoizq = true;
+				auxiliar = auxiliar.hijoIzquierdo;
+			}else{
+				esHijoizq = false;
+				auxiliar = auxiliar.hijoDerecho;
+			}
+			if(auxiliar == null){
+				return false;
+			}
+		}//Fin del while
+		if(auxiliar.hijoIzquierdo == null && auxiliar.hijoDerecho == null) {
+			if(auxiliar == raiz)
+				raiz = null;
+			else if (esHijoizq)
+				padre.hijoIzquierdo = null;
+			else
+				padre.hijoDerecho = null;
+		}else if (auxiliar.hijoDerecho == null) {
+			if(auxiliar == raiz)
+				raiz = auxiliar.hijoIzquierdo;
+			else if (esHijoizq)
+				padre.hijoIzquierdo = auxiliar.hijoIzquierdo;
+			else
+				padre.hijoDerecho = auxiliar.hijoIzquierdo;
+		}else if (auxiliar.hijoIzquierdo == null) {
+			if(auxiliar == raiz)
+				raiz = auxiliar.hijoDerecho;
+			else if (esHijoizq)
+				padre.hijoIzquierdo = auxiliar.hijoDerecho;
+			else
+				padre.hijoDerecho = auxiliar.hijoIzquierdo;
+		}else {
+			NodoArbolAVL reemplazo = obtenerNodoReemplazo(auxiliar);
+			if(auxiliar == raiz)
+				raiz = reemplazo;
+			else if (esHijoizq) 	
+				padre.hijoIzquierdo = reemplazo;
+			else
+				padre.hijoDerecho = reemplazo;
+			
+			reemplazo.hijoIzquierdo = auxiliar.hijoIzquierdo;	
+		}
+		return true;
+	}
+	//Metodo encargado de devolvernos el nodo reemplazo
+	public NodoArbolAVL obtenerNodoReemplazo(NodoArbolAVL nodoReemp) {
+		NodoArbolAVL reemplazarPadre = nodoReemp;
+		NodoArbolAVL reemplazo = nodoReemp;
+		NodoArbolAVL auxiliar = nodoReemp.hijoDerecho;
+		while (auxiliar != null) {
+			reemplazarPadre = reemplazo;
+			reemplazo = auxiliar;
+			auxiliar = auxiliar.hijoIzquierdo;		
+		}
+		if(reemplazo != nodoReemp.hijoDerecho) {
+			reemplazarPadre.hijoIzquierdo = reemplazo.hijoDerecho;
+			reemplazo.hijoDerecho = nodoReemp.hijoDerecho;
+		}
+		return reemplazo;
+	}
 }
