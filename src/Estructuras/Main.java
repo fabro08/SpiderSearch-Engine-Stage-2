@@ -17,7 +17,11 @@ public class Main {
 		else {
 			javax.swing.JOptionPane.showMessageDialog(null, "No se encontro el nodo");
 
-		}
+		//if (elimina == true)
+		//	javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
+		//else {
+		//	javax.swing.JOptionPane.showMessageDialog(null, "No se encontro el nodo");
+	//	}
 		
 		System.out.println("");
 		arbolito.inOrden(arbolito.obtenerRaiz());

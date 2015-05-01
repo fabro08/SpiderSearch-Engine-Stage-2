@@ -19,17 +19,35 @@ public class ArbolAVL {
 	}
 	
 	//Buscar
-	public NodoArbolAVL buscar(int d, NodoArbolAVL r){
-		if(r == null)
-			return null;
-		else if(r.dato == d)
-			return r;
-		else if (r.dato < d)
-			return buscar(d, r.hijoDerecho);
-		else
-			return buscar(d, r.hijoIzquierdo);
+	public NodoArbolAVL buscar(String d, NodoArbolAVL r){ 
+		if (Esta(d, r) == true) {
+			if(r.palabra.dato == d) {
+				System.out.println(r.palabra.dato);			}
+			else {
+				buscar(d, r.hijoIzquierdo);
+				buscar(d, r.hijoDerecho);
+			}
+		}else {
+			System.out.println("Nodo no encontrado");
+		}
+		return r;
+	}
+	public boolean Esta(String d, NodoArbolAVL r) {
+		boolean esta = false;
+		if(raiz != null) {
+			
+			if(r.palabra.dato == d) {
+				esta = true;
+			}
+			else {
+				Esta(d, r.hijoIzquierdo);
+				Esta(d, r.hijoDerecho);
+			}
+		}
+		return esta;
+			
 		
-		
+	
 	}
 	//Obtener Factor de Equilibrio
 	public int obtenerFE(NodoArbolAVL x){
@@ -78,26 +96,26 @@ public class ArbolAVL {
 	//Metodo para insertar AVL (De forma balanceada)
 	public NodoArbolAVL insertarAVL(NodoArbolAVL nuevo, NodoArbolAVL subAr){
 		NodoArbolAVL nuevoPadre = subAr;
-		if(nuevo.dato < subAr.dato){
+		if(nuevo.palabra.cantidad < subAr.palabra.cantidad){
 			if(subAr.hijoIzquierdo == null)
 				subAr.hijoIzquierdo = nuevo;
 			else{
 				subAr.hijoIzquierdo = insertarAVL(nuevo, subAr.hijoIzquierdo);
 				if((obtenerFE(subAr.hijoIzquierdo) - obtenerFE(subAr.hijoDerecho) == 2)){
-					if(nuevo.dato < subAr.hijoIzquierdo.dato)
+					if(nuevo.palabra.cantidad < subAr.hijoIzquierdo.palabra.cantidad)
 						nuevoPadre = rotacionIzquierda(subAr);
 					else
 						nuevoPadre = rotacionDobleIzquierda(subAr);
 				}
 			}
 		}
-		else if(nuevo.dato > subAr.dato){
+		else if(nuevo.palabra.cantidad > subAr.palabra.cantidad){
 			if(subAr.hijoDerecho == null)
 				subAr.hijoDerecho = nuevo;
 			else{
 				subAr.hijoDerecho = insertarAVL(nuevo, subAr.hijoDerecho);
 				if((obtenerFE(subAr.hijoDerecho) - obtenerFE(subAr.hijoIzquierdo) == 2)){
-					if(nuevo.dato > subAr.hijoDerecho.dato)
+					if(nuevo.palabra.cantidad > subAr.hijoDerecho.palabra.cantidad)
 						nuevoPadre = rotacionDerecha(subAr);
 					else
 						nuevoPadre = rotacionDobleDerecha(subAr);
@@ -117,8 +135,9 @@ public class ArbolAVL {
 		return nuevoPadre;
 	}
 	//Metodo para Insertar
-	public void insertar(int d){
-		NodoArbolAVL nuevo = new NodoArbolAVL(d);
+	public void insertar(String palabra, int cantidad){
+		Palabra nueva = new Palabra(palabra, cantidad);
+		NodoArbolAVL nuevo = new NodoArbolAVL(nueva);
 		if(raiz == null)
 			raiz = nuevo;
 		else
@@ -129,7 +148,7 @@ public class ArbolAVL {
 	public void inOrden(NodoArbolAVL r){
 		if (r != null){
 			inOrden(r.hijoIzquierdo);
-			System.out.print(r.dato + ", ");
+			System.out.print(r.palabra.dato+ ", ");
 			inOrden(r.hijoDerecho);
 		}
 	}
@@ -137,7 +156,7 @@ public class ArbolAVL {
 	//Metodo para recorrer el Arbol PreOrden
 	public void preOrden(NodoArbolAVL r){
 		if (r != null){
-			System.out.print(r.dato + ", ");
+			System.out.print(r.palabra.dato + ", ");
 			preOrden(r.hijoIzquierdo);
 			preOrden(r.hijoDerecho);
 		}
@@ -148,16 +167,16 @@ public class ArbolAVL {
 		if (r != null){
 			postOrden(r.hijoIzquierdo);
 			postOrden(r.hijoDerecho);
-			System.out.print(r.dato + ", ");
+			System.out.print(r.palabra.dato + ", ");
 		}
 	}
 	
 	//Metodo para eliminar un nodo
-	public boolean eliminar(int d){
+	public boolean eliminar(String d){
 		NodoArbolAVL auxiliar = raiz;
 		NodoArbolAVL padre = raiz;
 		boolean esHijoizq = true;
-		while(auxiliar.dato != d){
+		while(auxiliar.palabra.dato != d){
 			padre = auxiliar;
 			if(d < auxiliar.dato){
 				esHijoizq = true;
