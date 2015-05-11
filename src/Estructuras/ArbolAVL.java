@@ -4,21 +4,36 @@
 package Estructuras;
 
 /**
+ * Clase ArbolAVL que crea y controla un arbol de tipo AVL con Nodos
  * @author arturo
  *
  */
+
 public class ArbolAVL {
+	//Campos de la clase
 	private NodoArbolAVL raiz;
 	
+	/**
+	 * Constructor de la clase ArbolAVL
+	 */
 	public ArbolAVL(){
 		raiz = null;
 	}
-	//Obtener raiz
+	
+	/**
+	 * Clase que retorna el nodo raíz del arbol
+	 * @return
+	 */
 	public NodoArbolAVL obtenerRaiz(){
 		return raiz;
 	}
 	
-	//Buscar
+	/**
+	 * Funcion que busca una palabra en los nodos del arbol y devuelve el nodo en cuestión
+	 * @param d - palabra a buscar
+	 * @param r - raiz del arbol al que se le aplica la busqueda
+	 * @return NodoArbol con el nodo buscado
+	 */
 	public NodoArbolAVL buscar(String d, NodoArbolAVL r){ 
 		if (Esta(d, r) == true) {
 			if(r.palabra.dato == d) {
@@ -32,32 +47,22 @@ public class ArbolAVL {
 		}
 		return r;
 	}
-	public boolean Esta(String d, NodoArbolAVL r) {
-		boolean esta = false;
-		if(raiz != null) {
-			
-			if(r.palabra.dato == d) {
-				esta = true;
-			}
-			else {
-				Esta(d, r.hijoIzquierdo);
-				Esta(d, r.hijoDerecho);
-			}
-		}
-		return esta;
-			
-		
-	
-	}
-	//Obtener Factor de Equilibrio
+	/**
+	 * Funcion para Obtener el Factor de Equilibrio
+	 * @param x - Nodo al que se le calculara el FE
+	 * @return int con el FE
+	 */
 	public int obtenerFE(NodoArbolAVL x){
 		if(x == null)
 			return -1;
 		else
 			return x.fe;
 	}
-	
-	//Rotacion Simple Izquierda
+	/**
+	 * Funcion que hace la Rotacion Simple Izquierda
+	 * @param c - Nodo con conflictos de FE
+	 * @return NodoArbolAVL con la raiz del nuevo subarbol
+	 */	
 	public NodoArbolAVL rotacionIzquierda(NodoArbolAVL c){
 		NodoArbolAVL auxiliar = c.hijoIzquierdo;
 		c.hijoIzquierdo = auxiliar.hijoDerecho;
@@ -66,8 +71,11 @@ public class ArbolAVL {
 		auxiliar.fe = Math.max(obtenerFE(auxiliar.hijoIzquierdo), obtenerFE(auxiliar.hijoDerecho))+1;
 		return auxiliar;
 	}
-	
-	//Rotacion Simple Derecha
+	/**
+	 * Funcion que hace la Rotacion Simple Derecha
+	 * @param c - Nodo con conflictos de FE
+	 * @return NodoArbolAVL con la raiz del nuevo subarbol
+	 */
 	public NodoArbolAVL rotacionDerecha(NodoArbolAVL c){
 		NodoArbolAVL auxiliar = c.hijoDerecho;
 		c.hijoDerecho = auxiliar.hijoIzquierdo;
@@ -77,7 +85,11 @@ public class ArbolAVL {
 		return auxiliar;
 	}
 	
-	//Rotacion Doble a la Izquierda
+	/**
+	 * Funcion que hace la Rotacion Doble a la Izquierda
+	 * @param c - Nodo con conflictos de FE
+	 * @return NodoArbolAVL con la raiz del nuevo subarbol
+	 */
 	public NodoArbolAVL rotacionDobleIzquierda(NodoArbolAVL c){
 		NodoArbolAVL temporal;
 		c.hijoIzquierdo = rotacionDerecha(c.hijoIzquierdo);
@@ -85,15 +97,23 @@ public class ArbolAVL {
 		return temporal;
 	}	
 	
-	//Rotacion Doble a la Derecha
+	/**
+	 * Funcion que hace la Rotacion Doble a la Derecha
+	 * @param c - Nodo con conflictos de FE
+	 * @return NodoArbolAVL con la raiz del nuevo subarbol
+	 */
 	public NodoArbolAVL rotacionDobleDerecha(NodoArbolAVL c){
 		NodoArbolAVL temporal;
 		c.hijoDerecho = rotacionIzquierda(c.hijoDerecho);
 		temporal = rotacionDerecha(c);
 		return temporal;	
 	}
-	
-	//Metodo para insertar AVL (De forma balanceada)
+	/**
+	 * Funcion que inserta un nodo de forma valanceada
+	 * @param nuevo - nuevo NodoArbolAVL a ser insertado
+	 * @param subAr - raiz del arbol, solo en caso de no estar vacio
+	 * @return NodoArbolAVL con la raiz del nuevo subarbol donde se hicieron las rotaciones
+	 */
 	public NodoArbolAVL insertarAVL(NodoArbolAVL nuevo, NodoArbolAVL subAr){
 		NodoArbolAVL nuevoPadre = subAr;
 		if(nuevo.palabra.cantidad < subAr.palabra.cantidad){
@@ -134,7 +154,12 @@ public class ArbolAVL {
 			subAr.fe = Math.max(obtenerFE(subAr.hijoIzquierdo), obtenerFE(subAr.hijoDerecho))+1;
 		return nuevoPadre;
 	}
-	//Metodo para Insertar
+	/**
+	 * Metodo para insertar un nuevo NodoArbolAVL, en el caso de que no este vacio llama a la
+	 * funcion insertarAVL
+	 * @param palabra - String con la palabra a ser almacenada en el Nodo
+	 * @param cantidad - Cantidad de veces que ha aparecido la palabra
+	 */
 	public void insertar(String palabra, int cantidad){
 		Palabra nueva = new Palabra(palabra, cantidad);
 		NodoArbolAVL nuevo = new NodoArbolAVL(nueva);
@@ -144,7 +169,10 @@ public class ArbolAVL {
 			raiz = insertarAVL(nuevo, raiz);
 	}
 	//Recorridos
-	//Metodo para recorrer el Arbol InOrden
+	/**
+	 * Metodo para recorrer el Arbol InOrden
+	 * @param r - NodoArbolAVL con la raiz del arbol
+	 */
 	public void inOrden(NodoArbolAVL r){
 		if (r != null){
 			inOrden(r.hijoIzquierdo);
@@ -153,7 +181,10 @@ public class ArbolAVL {
 		}
 	}
 	
-	//Metodo para recorrer el Arbol PreOrden
+	/**
+	 * Metodo para recorrer el Arbol PreOrden
+	 * @param r - NodoArbolAVL con la raiz del arbol
+	 */
 	public void preOrden(NodoArbolAVL r){
 		if (r != null){
 			System.out.print(r.palabra.dato + ", ");
@@ -162,7 +193,10 @@ public class ArbolAVL {
 		}
 	}
 	
-	//Metodo para recorrer el Arbol PostOrden
+	/**
+	 * Metodo para recorrer el Arbol PostOrden
+	 * @param r - NodoArbolAVL con la raiz del arbol
+	 */
 	public void postOrden(NodoArbolAVL r){
 		if (r != null){
 			postOrden(r.hijoIzquierdo);
@@ -170,8 +204,11 @@ public class ArbolAVL {
 			System.out.print(r.palabra.dato + ", ");
 		}
 	}
-	
-	//Metodo para eliminar un nodo
+	/**
+	 * Funcion que elimina un nodo del arbol
+	 * @param d - Palabra a bucar contenida dentro del Nodo deseado
+	 * @return booleano indicando si se elimino el Nono deseado
+	 */
 	public boolean eliminar(String d){
 		NodoArbolAVL auxiliar = raiz;
 		NodoArbolAVL padre = raiz;
@@ -223,7 +260,12 @@ public class ArbolAVL {
 		}
 		return true;
 	}
-	//Metodo encargado de devolvernos el nodo reemplazo
+	
+	/**
+	 * Funcion encargada de devolvernos el nodo reemplazo de un nodo eliminado
+	 * @param nodoReemp - NodoArbolAVL a ser reemplazado(Nodo a ser eliminado)
+	 * @return - NodoArbolAVL que tomara su lugar
+	 */
 	public NodoArbolAVL obtenerNodoReemplazo(NodoArbolAVL nodoReemp) {
 		NodoArbolAVL reemplazarPadre = nodoReemp;
 		NodoArbolAVL reemplazo = nodoReemp;

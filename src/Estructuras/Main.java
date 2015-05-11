@@ -8,10 +8,11 @@ public class Main {
 		arbolito.insertar("Hola",4);
 		arbolito.insertar("Bola",1);
 		arbolito.insertar("Casa",3);
-		arbolito.insertar("Estuvo",3);
+		arbolito.insertar("Estuvo",8);
 		arbolito.inOrden(arbolito.obtenerRaiz());
 		System.out.println("");
-	//	arbolito.buscar("Estuvo", arbolito.obtenerRaiz());
+	//	arbolito.Esta("Casa", arbolito.obtenerRaiz());
+		arbolito.buscar2("Casaaa", arbolito.obtenerRaiz());
 
 		//if (elimina == true)
 		//	javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
