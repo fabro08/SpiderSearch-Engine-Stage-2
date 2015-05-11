@@ -1,35 +1,51 @@
 package Estructuras;
 
+import Parseo.Peso;
+import Parseo.Separar;
+import Parseo.TikaParser;
+import Parseo.XMLParser;
+
 
 public class Main {
 
 	public static void main(String[] args) {
-		ArbolAVL arbolito = new ArbolAVL();
-		arbolito.insertar(5);
-		arbolito.insertar(8);
-		arbolito.insertar(9);
-		arbolito.insertar(7);
-		arbolito.inOrden(arbolito.obtenerRaiz());
-		boolean elimina = arbolito.eliminar(5);
-		boolean elimina = arbolito.eliminar(8);
-		if (elimina == true)
-			javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
-		else {
-			javax.swing.JOptionPane.showMessageDialog(null, "No se encontro el nodo");
-
+//		ArbolAVL arbolito = new ArbolAVL();
+//		arbolito.insertar("Hola",4);
+//		arbolito.insertar("Bola",1);
+//		arbolito.insertar("Casa",3);
+//		arbolito.insertar("Estuvo",8);
+//		arbolito.inOrden(arbolito.obtenerRaiz());
 		//if (elimina == true)
-		//	javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
-		//else {
-		//	javax.swing.JOptionPane.showMessageDialog(null, "No se encontro el nodo");
-	//	}
+			//javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
+//		else {
+	//		javax.swing.JOptionPane.showMessageDialog(null, "No se encontro el nodo");
+
+		//}
 		
-		System.out.println("");
-		arbolito.inOrden(arbolito.obtenerRaiz());
-		TikaParser  aParser = new TikaParser();
-		String a= String.valueOf(aParser.GetHandler());
-       
-		Separar fghSeparar = new Separar(a);
-	fghSeparar.CicloToken();
+		//System.out.println("");
+		//arbolito.inOrden(arbolito.obtenerRaiz());
+		XMLParser URL1 = new XMLParser("configuracion.xml","URL1");
+		//XMLParser URL2 = new XMLParser("configuracion.xml","URL2");
+		//XMLParser URL3 = new XMLParser("configuracion.xml","URL3");
+		
+		URL1.obtenerCola();
+		System.out.println(URL1.getArchivo());
+		System.out.println(URL1.getPeso());a
+				a
+				a
+		
+		//String a= String.valueOf(URL1.obtenerCola());
+		//System.out.println(a.getTexto());
+//TikaParser  aParser = new TikaParser(a);
+		//System.out.println(aParser.GetHandler());
+		//String b= String.valueOf(aParser.GetHandler());
+		
+	//Separar fghSeparar = new Separar(b);
+	//fghSeparar.CicloToken();
+
+	
+	
+	
 	}
 
 }
