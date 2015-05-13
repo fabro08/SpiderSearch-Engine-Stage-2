@@ -24,21 +24,21 @@ public class Main {
 		
 		//System.out.println("");
 		//arbolito.inOrden(arbolito.obtenerRaiz());
-		XMLParser URL1 = new XMLParser("configuracion.xml","URL1");
+		XMLParser URL1 = new XMLParser("configuracion.xml","URL");
 		//XMLParser URL2 = new XMLParser("configuracion.xml","URL2");
 		//XMLParser URL3 = new XMLParser("configuracion.xml","URL3");
 		
 		URL1.obtenerCola();
-		System.out.println(URL1.getArchivo());
-		System.out.println(URL1.getPeso());a
-				a
-				a
+		//System.out.println(URL1.getArchivo());
+		//System.out.println(URL1.getPeso());
+				
+				
 		
-		//String a= String.valueOf(URL1.obtenerCola());
-		//System.out.println(a.getTexto());
+		String a= String.valueOf(URL1.obtenerCola());
+		System.out.println(a.getTexto());
 //TikaParser  aParser = new TikaParser(a);
 		//System.out.println(aParser.GetHandler());
-		//String b= String.valueOf(aParser.GetHandler());
+	//	String b= String.valueOf(aParser.GetHandler());
 		
 	//Separar fghSeparar = new Separar(b);
 	//fghSeparar.CicloToken();
