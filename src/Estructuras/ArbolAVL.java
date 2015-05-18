@@ -22,7 +22,7 @@ public class ArbolAVL {
 	
 	/**
 	 * Clase que retorna el nodo raíz del arbol
-	 * @return
+	 * @return - NodoArbolAVL con el nodo raiz del Arbol
 	 */
 	public NodoArbolAVL obtenerRaiz(){
 		return raiz;
