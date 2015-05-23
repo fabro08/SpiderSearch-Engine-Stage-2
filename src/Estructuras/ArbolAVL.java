@@ -3,6 +3,10 @@
  */
 package Estructuras;
 
+import org.apache.poi.util.SystemOutLogger;
+
+import com.coremedia.iso.boxes.StaticChunkOffsetBox;
+
 /**
  * Clase ArbolAVL que crea y controla un arbol de tipo AVL con Nodos
  * @author arturo
@@ -12,11 +16,15 @@ package Estructuras;
 public class ArbolAVL {
 	//Campos de la clase
 	private NodoArbolAVL raiz;
+	boolean esta;
+	private int tamanio;
 	
 	/**
 	 * Constructor de la clase ArbolAVL
 	 */
 	public ArbolAVL(){
+		esta = false;
+		tamanio = 0;
 		raiz = null;
 	}
 	
@@ -34,18 +42,26 @@ public class ArbolAVL {
 	 * @param r - raiz del arbol al que se le aplica la busqueda
 	 * @return NodoArbol con el nodo buscado
 	 */
-	public NodoArbolAVL buscar(String d, NodoArbolAVL r){ 
-		if (Esta(d, r) == true) {
-			if(r.palabra.dato == d) {
-				System.out.println(r.palabra.dato);			}
-			else {
+	public boolean buscar(String d, NodoArbolAVL r){  
+		ComparaString comparador = new ComparaString(r.palabra.dato, d);
+		while (r != null){
+			if(comparador.comparar() == 0) {
+				System.out.println(r.palabra.dato);	
+				esta = true;
+				break;
+				
+			}
+			if (obtenerFE(r.hijoIzquierdo) >= 0) {
 				buscar(d, r.hijoIzquierdo);
+			}
+			if (obtenerFE(r.hijoDerecho) >= 0){
 				buscar(d, r.hijoDerecho);
 			}
-		}else {
-			System.out.println("Nodo no encontrado");
+			break;
+			
 		}
-		return r;
+		//System.out.println("Nodo no encontrado");	
+		return esta;
 	}
 	/**
 	 * Funcion para Obtener el Factor de Equilibrio
@@ -161,6 +177,7 @@ public class ArbolAVL {
 	 * @param cantidad - Cantidad de veces que ha aparecido la palabra
 	 */
 	public void insertar(String palabra, int cantidad){
+		tamanio = tamanio+1;
 		Palabra nueva = new Palabra(palabra, cantidad);
 		NodoArbolAVL nuevo = new NodoArbolAVL(nueva);
 		if(raiz == null)

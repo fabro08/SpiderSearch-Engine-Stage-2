@@ -10,7 +10,7 @@ package Estructuras;
  */
 public class NodoArbolAVL {
 	//Campos de la clase
-	Palabra palabra;;
+	Palabra palabra;
 	int fe;
 	NodoArbolAVL hijoIzquierdo, hijoDerecho;
 	
