@@ -1,57 +1,30 @@
 package Estructuras;
 
+
 import Parseo.Peso;
 import Parseo.Separar;
 import Parseo.TikaParser;
 import Parseo.XMLParser;
 
 
+
 public class Main {
 
 	public static void main(String[] args) {
-//		ArbolAVL arbolito = new ArbolAVL();
-//		arbolito.insertar("Hola",4);
-//		arbolito.insertar("Bola",1);
-//		arbolito.insertar("Casa",3);
-//		arbolito.insertar("Estuvo",8);
-//		arbolito.inOrden(arbolito.obtenerRaiz());
-//		arbolito.postOrden(arbolito.obtenerRaiz());
-//		//if (elimina == true)
-		BST aBst = new BST();
-		aBst.insertarNombre("afafafa!!");
-		System.out.println(aBst.obtenerNombre());
-				
-			//javax.swing.JOptionPane.showMessageDialog(null, "Se elimino el nodo");
-//		else {
-	//		javax.swing.JOptionPane.showMessageDialog(null, "No se encontro el nodo");
-
-		//}
+		ArbolHeap nueva = new ArbolHeap();
+		nueva.insertar(14, "www.google.com1");
+		nueva.insertar(20, "www.google.com2");
+		nueva.insertar(18, "www.google.com3");
+		nueva.insertar(78, "www.google.com4");
+		nueva.insertar(7, "www.google.com5");
+		nueva.insertar(16, "www.google.com6");
+		nueva.insertar(5154786, "www.google.com7");
+	//	nueva.revisaMayores(nueva.cola);	
+	//	System.out.println(nueva.cabeza.peso);
+	//	System.out.println(nueva.cola.peso);
+		nueva.imprimir();
+		System.out.println(nueva.obtenerenPos(5).peso);
 		
-		//System.out.println("");
-		//arbolito.inOrden(arbolito.obtenerRaiz());
-	//	XMLParser URL1 = new XMLParser("configuracion.xml","URL1");
-		//XMLParser URL2 = new XMLParser("configuracion.xml","URL2");
-		//XMLParser URL3 = new XMLParser("configuracion.xml","URL3");
-		
-//		URL1.obtenerCola();
-//		
-//		System.out.println(URL1.getArchivo());
-//		//System.out.println(URL1.getPeso());
-//				
-//		System.out.println(URL1.obtenerCola());	
-//		
-//		String a= String.valueOf(URL1.obtenerCola());
-//		//System.out.println(a);
-//TikaParser  aParser = new TikaParser(a);
-////System.out.println(aParser.GetHandler());
-//		//String b= String.valueOf(aParser.GetHandler());
-//		
-//	//Separar fghSeparar = new Separar(b);
-//	//fghSeparar.CicloToken();
-
-	
-	
-	
 	}
 
 }
