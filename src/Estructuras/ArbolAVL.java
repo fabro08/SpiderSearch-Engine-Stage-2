@@ -221,62 +221,6 @@ public class ArbolAVL {
 			System.out.print(r.palabra.dato + ", ");
 		}
 	}
-	/**
-	 * Funcion que elimina un nodo del arbol
-	 * @param d - Palabra a bucar contenida dentro del Nodo deseado
-	 * @return booleano indicando si se elimino el Nono deseado
-	 */
-	public boolean eliminar(String d){
-		NodoArbolAVL auxiliar = raiz;
-		NodoArbolAVL padre = raiz;
-		boolean esHijoizq = true;
-		while(auxiliar.palabra.dato != d){
-			padre = auxiliar;
-			if(d < auxiliar.dato){
-				esHijoizq = true;
-				auxiliar = auxiliar.hijoIzquierdo;
-			}else{
-				esHijoizq = false;
-				auxiliar = auxiliar.hijoDerecho;
-			}
-			if(auxiliar == null){
-				return false;
-			}
-		}//Fin del while
-		if(auxiliar.hijoIzquierdo == null && auxiliar.hijoDerecho == null) {
-			if(auxiliar == raiz)
-				raiz = null;
-			else if (esHijoizq)
-				padre.hijoIzquierdo = null;
-			else
-				padre.hijoDerecho = null;
-		}else if (auxiliar.hijoDerecho == null) {
-			if(auxiliar == raiz)
-				raiz = auxiliar.hijoIzquierdo;
-			else if (esHijoizq)
-				padre.hijoIzquierdo = auxiliar.hijoIzquierdo;
-			else
-				padre.hijoDerecho = auxiliar.hijoIzquierdo;
-		}else if (auxiliar.hijoIzquierdo == null) {
-			if(auxiliar == raiz)
-				raiz = auxiliar.hijoDerecho;
-			else if (esHijoizq)
-				padre.hijoIzquierdo = auxiliar.hijoDerecho;
-			else
-				padre.hijoDerecho = auxiliar.hijoIzquierdo;
-		}else {
-			NodoArbolAVL reemplazo = obtenerNodoReemplazo(auxiliar);
-			if(auxiliar == raiz)
-				raiz = reemplazo;
-			else if (esHijoizq) 	
-				padre.hijoIzquierdo = reemplazo;
-			else
-				padre.hijoDerecho = reemplazo;
-			
-			reemplazo.hijoIzquierdo = auxiliar.hijoIzquierdo;	
-		}
-		return true;
-	}
 	
 	/**
 	 * Funcion encargada de devolvernos el nodo reemplazo de un nodo eliminado
