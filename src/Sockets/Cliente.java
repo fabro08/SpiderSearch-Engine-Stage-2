@@ -3,65 +3,39 @@ package Sockets;
 import java.net.*;
 import java.io.*;
 
-/**
- * 
- *
- * 
- * @author Jorge V
- */
+import javax.swing.JOptionPane;
+
+import org.apache.poi.ss.formula.functions.IPMT;
+import org.aspectj.lang.reflect.CatchClauseSignature;
+import org.bouncycastle.asn1.teletrust.TeleTrusTNamedCurves;
 
 public class Cliente {
+	Socket cliente;
 
-	final String HOST = "localhost";
-
-	final int PUERTO = 5000;
-
-	Socket CreaSocket;
-
-	DataOutputStream mensaje;
-
-	BufferedReader entrada;
-	
-	String MensajeServidor;
-	// Cliente
-
-	public void initClient() /* ejecuta este metodo para correr el cliente */
-
-	{
-
-		try
-
-		{
-
-			 CreaSocket = new Socket("localhost", 5008); /*
-											 * conectar a un servidor en
-											 * localhost con puerto 5000
-											 */
-
-			// creamos el flujo de datos por el que se enviara un mensaje
-
-			mensaje = new DataOutputStream(CreaSocket.getOutputStream());
-			entrada = new BufferedReader(new InputStreamReader(CreaSocket.getInputStream()));
-			 MensajeServidor = entrada.readLine();
-			 System.out.println(MensajeServidor);
-
-			// enviamos el mensaje
-
-			mensaje.writeUTF("hola que tal!!");
-			System.out.println("a");
-
-			// cerramos la conexión
-
-		//	sc.close();
-
-		} catch (Exception e)
-
-		{
-
-			System.out.println("Error: " + e.getMessage());
-
+	BufferedReader entrada,teclado;
+	PrintStream salida;
+	public void IniciarCliente(String texto, String ip, int dirpuerto){
+		try{
+			cliente = new Socket(ip,dirpuerto);
+			entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
+			
+			
+			salida = new PrintStream(cliente.getOutputStream());
+			salida.println(texto);
+			
+			String msg = entrada.readLine();		
+			System.out.println(msg);
+			
+			entrada.close();
+			//teclado.close();
+			salida.close();
+			cliente.close();
+			
 		}
-
+		catch(Exception e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 	}
-
+	
 }
+	

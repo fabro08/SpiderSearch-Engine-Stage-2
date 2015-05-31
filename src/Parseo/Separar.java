@@ -7,9 +7,6 @@ import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.tika.sax.BodyContentHandler;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
-import Estructuras.ArbolAVL;
-import Estructuras.Lista;
-
 /**
  * Clase para separar las palabras
  * 
@@ -43,12 +40,9 @@ public class Separar {
 			i++;
 		}
 		StringTokenizer token = new StringTokenizer(name, " ");
-		ArbolAVL arbolito = new ArbolAVL();
-		Lista enLista = new Lista();
-
+		
 		while (token.hasMoreTokens()) {
 			
-				enLista.Insertar(token.nextElement());
 				
 			
 				

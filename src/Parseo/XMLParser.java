@@ -41,7 +41,7 @@ public class XMLParser {
 	 */
 	public Object  obtenerCola(){
 		
-		String ruta = "/media/Respaldo/Java/SpiderSearch-Engine-Stage-2/";
+		String ruta = "/media/Respaldo/Java/Proyecto/";
 		//Cola colaParse = new Cola();
 		try {
 			peso.SetPeso();
